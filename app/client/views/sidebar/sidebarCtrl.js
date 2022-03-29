@@ -1,8 +1,9 @@
 const angular = require('angular');
 const Utils = require('../../src/modules/Utils.js');
 
-angular.module('reg')
-  .service('settings', function() {})
+angular
+  .module('reg')
+  .service('settings', function () {})
   .controller('SidebarCtrl', [
     '$rootScope',
     '$scope',
@@ -11,8 +12,7 @@ angular.module('reg')
     'AuthService',
     'Session',
     'EVENT_INFO',
-    function($rootScope, $scope, settings, Utils, AuthService, Session, EVENT_INFO){
-
+    function ($rootScope, $scope, settings, Utils, AuthService, Session, EVENT_INFO) {
       var settings = settings.data;
       var user = $rootScope.currentUser;
 
@@ -20,18 +20,18 @@ angular.module('reg')
 
       $scope.pastConfirmation = Utils.isAfter(user.status.confirmBy);
 
-      $scope.logout = function(){
+      $scope.logout = function () {
         AuthService.logout();
       };
 
       $scope.showSidebar = false;
-      $scope.toggleSidebar = function(){
+      $scope.toggleSidebar = function () {
         $scope.showSidebar = !$scope.showSidebar;
       };
 
       // oh god jQuery hack
-      $('.item').on('click', function(){
+      $('.item').on('click', function () {
         $scope.showSidebar = false;
       });
-
-    }]);
+    },
+  ]);

@@ -12,15 +12,15 @@ var schema = new mongoose.Schema({
   status: String,
   timeOpen: {
     type: Number,
-    default: 0
+    default: 0,
   },
   timeClose: {
     type: Number,
-    default: Date.now() + 31104000000 // Add a year from now.
+    default: Date.now() + 31104000000, // Add a year from now.
   },
   timeConfirm: {
     type: Number,
-    default: 604800000 // Date of confirmation
+    default: 604800000, // Date of confirmation
   },
   whitelistedEmails: {
     type: [String],
@@ -28,17 +28,17 @@ var schema = new mongoose.Schema({
     default: ['.edu'],
   },
   waitlistText: {
-    type: String
+    type: String,
   },
   acceptanceText: {
     type: String,
   },
   confirmationText: {
-    type: String
+    type: String,
   },
   allowMinors: {
-    type: Boolean
-  }
+    type: Boolean,
+  },
 });
 
 /**
@@ -46,11 +46,10 @@ var schema = new mongoose.Schema({
  * Whitelist emails are by default not included in settings.
  * @param  {Function} callback args(err, emails)
  */
-schema.statics.getWhitelistedEmails = function(callback){
-  this
-    .findOne({})
+schema.statics.getWhitelistedEmails = function (callback) {
+  this.findOne({})
     .select('whitelistedEmails')
-    .exec(function(err, settings){
+    .exec(function (err, settings) {
       return callback(err, settings.whitelistedEmails);
     });
 };
@@ -59,23 +58,20 @@ schema.statics.getWhitelistedEmails = function(callback){
  * Get the open and close time for registration.
  * @param  {Function} callback args(err, times : {timeOpen, timeClose, timeConfirm})
  */
-schema.statics.getRegistrationTimes = function(callback){
-  this
-    .findOne({})
+schema.statics.getRegistrationTimes = function (callback) {
+  this.findOne({})
     .select('timeOpen timeClose timeConfirm')
-    .exec(function(err, settings){
+    .exec(function (err, settings) {
       callback(err, {
         timeOpen: settings.timeOpen,
         timeClose: settings.timeClose,
-        timeConfirm: settings.timeConfirm
+        timeConfirm: settings.timeConfirm,
       });
     });
 };
 
-schema.statics.getPublicSettings = function(callback){
-  this
-    .findOne({})
-    .exec(callback);
+schema.statics.getPublicSettings = function (callback) {
+  this.findOne({}).exec(callback);
 };
 
 module.exports = mongoose.model('Settings', schema);

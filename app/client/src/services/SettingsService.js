@@ -1,54 +1,51 @@
-angular.module('reg')
-  .factory('SettingsService', [
+angular.module('reg').factory('SettingsService', [
   '$http',
-  function($http){
-
+  function ($http) {
     var base = '/api/settings/';
 
     return {
-      getPublicSettings: function(){
+      getPublicSettings: function () {
         return $http.get(base);
       },
-      updateRegistrationTimes: function(open, close){
+      updateRegistrationTimes: function (open, close) {
         return $http.put(base + 'times', {
           timeOpen: open,
           timeClose: close,
         });
       },
-      updateConfirmationTime: function(time){
+      updateConfirmationTime: function (time) {
         return $http.put(base + 'confirm-by', {
-          time: time
+          time: time,
         });
       },
-      getWhitelistedEmails: function(){
+      getWhitelistedEmails: function () {
         return $http.get(base + 'whitelist');
       },
-      updateWhitelistedEmails: function(emails){
+      updateWhitelistedEmails: function (emails) {
         return $http.put(base + 'whitelist', {
-          emails: emails
+          emails: emails,
         });
       },
-      updateWaitlistText: function(text){
+      updateWaitlistText: function (text) {
         return $http.put(base + 'waitlist', {
-          text: text
+          text: text,
         });
       },
-      updateAcceptanceText: function(text){
+      updateAcceptanceText: function (text) {
         return $http.put(base + 'acceptance', {
-          text: text
+          text: text,
         });
       },
-      updateConfirmationText: function(text){
+      updateConfirmationText: function (text) {
         return $http.put(base + 'confirmation', {
-          text: text
+          text: text,
         });
       },
-      updateAllowMinors: function(allowMinors){
-        return $http.put(base + 'minors', { 
-          allowMinors: allowMinors 
+      updateAllowMinors: function (allowMinors) {
+        return $http.put(base + 'minors', {
+          allowMinors: allowMinors,
         });
       },
     };
-
-  }
-  ]);
+  },
+]);

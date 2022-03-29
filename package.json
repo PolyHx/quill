@@ -44,7 +44,8 @@
     "config": "cp .env.config .env",
     "test": "jest --forceExit",
     "test:accessibility": "pa11y-ci",
-    "eslint": "./node_modules/.bin/eslint './**/*.js'"
+    "eslint": "./node_modules/.bin/eslint './**/*.js'",
+    "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\""
   },
   "devDependencies": {
     "eslint": "^6.8.0",
@@ -59,6 +60,7 @@
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "pa11y-ci": "^2.3.0",
+    "prettier": "^2.6.1",
     "supertest": "^4.0.2"
   },
   "engines": {
