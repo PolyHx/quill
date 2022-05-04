@@ -258,10 +258,6 @@ UserController.updateProfileById = function (id, profile, callback) {
   // Validate the user profile, and mark the user as profile completed
   // when successful.
   User.validateProfile(profile, function (err) {
-    if (err) {
-      return callback({ message: 'invalid profile' });
-    }
-
     // Check if its within the registration window.
     Settings.getRegistrationTimes(function (err, times) {
       if (err) {

@@ -34,7 +34,7 @@
     },
     "EMAIL_CONTACT": {
       "description": "Used to send verification, registration, and confirmation emails",
-      "value": "Hackathon Team <team@example.com>"
+      "value": "Hackathon Team"
     },
     "EMAIL_HOST": "smtp.gmail.com",
     "EMAIL_USER": "foo@bar.com",
