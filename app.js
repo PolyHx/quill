@@ -18,7 +18,11 @@ var adminConfig = require('./config/admin');
 var app = express();
 
 // Connect to mongodb
-mongoose.connect(database);
+mongoose.connect(database, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+});
 
 app.use(morgan('dev'));
 
